@@ -6,7 +6,17 @@ var word = "";
 var guesses = 12;
 
 
+const reset = function reset() {
+    pickedLetters = [];
+    wrongLetters = [];
+    word = pickNewWord();
+    guesses = 12;
 
+    document.getElementById("status").textContent = "Good luck!";
+    document.getElementById("guesses").textContent = guesses;
+    
+    console.log(word)
+}
 
 // Pick new word from words list
 const pickNewWord = function pickNewWord() {
@@ -15,7 +25,7 @@ const pickNewWord = function pickNewWord() {
 
 
 document.onkeyup = () => {
-    if (guesses < 1) {
+    if (guesses < 1) { // Checking for game over
         document.getElementById("status").textContent = "Game over.";
     } else {
         const key = event.key;
@@ -37,9 +47,12 @@ document.onkeyup = () => {
         }
     }
 }
-// // Button click!
-// document.getElementById("start").onclick = () => {
-// }
 
 
-word = pickNewWord();
+// Reset game click!
+document.getElementById("reset").onclick = () => {
+    reset();
+}
+
+
+reset();
