@@ -147,8 +147,3 @@ document.onkeyup = () => {
 
 
 start();
-
-
-
-
-// Putting dictionary at bottom for a few reasons: 1) so it's not in the way, 2) because ``var`` gets lifted to
