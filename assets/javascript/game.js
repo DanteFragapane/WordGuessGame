@@ -273,7 +273,9 @@ const reset = function reset() {
     for (let i = 0; i < word.length; i++) {
         wordArray.push("_");
     }
-    document.getElementById("word").textContent = arrayToString(wordArray);;
+    document.getElementById("word").textContent = arrayToString(wordArray);
+    document.getElementById("guesses").textContent = "";
+    document.getElementById("incorrect").textContent = "";
     document.getElementById("guessesLeft").textContent = guessesLeft;
     document.getElementById("wins").textContent = wins;
 
@@ -340,8 +342,7 @@ document.onkeyup = () => {
             if (!wordArray.includes("_")) {
                 wins += 1;
                 reset();
-            }
-            update();
+            } else update();
         }
     }
 }
