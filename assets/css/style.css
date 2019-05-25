@@ -2,7 +2,16 @@ h1 {
     text-align: center;
 }
 
+body {
+    background-color: rgb(164, 217, 255);
+}
+
 .main {
+    /* Set the width and center it */
     width: 960px;
     margin: auto;
+}
+
+#word {
+    background-color: rgb(213, 238, 255)
 }

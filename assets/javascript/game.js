@@ -1,5 +1,5 @@
 // Borrowed from random-words' source code, by punkave on GitHub
-var words = [
+const words = [
     'alpha',
     'bravo',
     'charlie',
@@ -53,6 +53,7 @@ var word = "";
 var wordArray = [];
 var guessesLeft = 12;
 var wins = 0;
+var previousWord = "";
 
 // Start the game
 const start = function start() {
@@ -64,6 +65,7 @@ const reset = function reset() {
     wordArray = [];
     pickedLetters = [];
     wrongLetters = [];
+    previousWord = word;
     word = pickNewWord();
 
     guessesLeft = 12;
@@ -71,11 +73,14 @@ const reset = function reset() {
     for (let i = 0; i < word.length; i++) {
         wordArray.push("_");
     }
+    document.getElementById("startText").textContent = "Press any key to start!"
     document.getElementById("word").textContent = arrayToString(wordArray);
     document.getElementById("guesses").textContent = "";
     document.getElementById("incorrect").textContent = "";
     document.getElementById("guessesLeft").textContent = guessesLeft;
     document.getElementById("wins").textContent = wins;
+    document.getElementById("previous").textContent = previousWord;
+
 
 }
 
@@ -92,7 +97,7 @@ const pickNewWord = function pickNewWord() {
 }
 
 // Update the uderscores
-var updateWord = function updateWord(word, underscores, guess) {
+const updateWord = function updateWord(word, underscores, guess) {
     word = word.split("");
 
     for (let i = 0; i < word.length; i++) {
@@ -104,16 +109,13 @@ var updateWord = function updateWord(word, underscores, guess) {
 }
 
 // Argument: array, returns array as string with spaces seperating characters
-var arrayToString = function arrayToString(word) {
+const arrayToString = function arrayToString(word) {
     var spaced = "";
     word.forEach(element => {
         spaced = spaced + " " + element;
     });
     return spaced;
 }
-
-
-
 
 
 // Game stuff
@@ -140,7 +142,9 @@ document.onkeyup = () => {
             if (!wordArray.includes("_")) {
                 wins += 1;
                 reset();
-            } else update();
+            } else {
+                update();
+            }
         }
     }
 }
