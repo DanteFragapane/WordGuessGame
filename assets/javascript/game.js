@@ -42,11 +42,18 @@ const words = [
     'rudder',
     'window',
     'door',
-    'fuel'
+    'fuel',
+    'lavatory',
+    'runway',
+    'taxiway',
+    'tower',
+    'gate',
+    'terminal',
+    'concourse',
+    'stand'
 ];
 
 // Set up the variables
-// const words = ["hello", "abracadabra", "walrus", "airplane", "russet", "potato", "man", "woman"];
 var pickedLetters = [];
 var wrongLetters = [];
 var word = "";
@@ -58,7 +65,7 @@ var previousWord = "";
 // Start the game
 const start = function start() {
     reset();
-}
+};
 
 // Game reset
 const reset = function reset() {
@@ -73,30 +80,29 @@ const reset = function reset() {
     for (let i = 0; i < word.length; i++) {
         wordArray.push("_");
     }
-    document.getElementById("startText").textContent = "Press any key to start!"
+    document.getElementById("startText").textContent = "Press any lowercase letter to start!";
     document.getElementById("word").textContent = arrayToString(wordArray);
     document.getElementById("guesses").textContent = "";
     document.getElementById("incorrect").textContent = "";
     document.getElementById("guessesLeft").textContent = guessesLeft;
     document.getElementById("wins").textContent = wins;
     document.getElementById("previous").textContent = previousWord;
-
-
-}
+};
 
 // Update the text on the page
 const update = function update() {
     document.getElementById("guessesLeft").textContent = guessesLeft;
     document.getElementById("guesses").textContent = arrayToString(pickedLetters);
     document.getElementById("incorrect").textContent = arrayToString(wrongLetters);
-}
+    document.getElementById("startText").textContent = "";
+};
 
 // Pick new word from words list
 const pickNewWord = function pickNewWord() {
     return words[Math.floor(Math.random() * words.length)];
-}
+};
 
-// Update the uderscores
+// Update the uderscores array
 const updateWord = function updateWord(word, underscores, guess) {
     word = word.split("");
 
@@ -105,8 +111,8 @@ const updateWord = function updateWord(word, underscores, guess) {
             underscores[i] = guess;
         }
     }
-    return underscores
-}
+    return underscores;
+};
 
 // Argument: array, returns array as string with spaces seperating characters
 const arrayToString = function arrayToString(word) {
@@ -115,7 +121,7 @@ const arrayToString = function arrayToString(word) {
         spaced = spaced + " " + element;
     });
     return spaced;
-}
+};
 
 
 // Game stuff
@@ -125,7 +131,7 @@ document.onkeyup = () => {
     } else {
 
         const key = event.key;
-        if (key.length == 1) { // Checking if input is an individual character
+        if (key.length == 1 && key.match(/[a-z]/g)) { // Checking if input is an individual character, and is a letter
             if (!pickedLetters.includes(key)) pickedLetters.push(key); // If the pickedLetters array does not include the current key, add it
             if (word.includes(key)) { // Checking if the random word includes the guessed letter
                 var updatedArray = updateWord(word, wordArray, key);
@@ -147,7 +153,7 @@ document.onkeyup = () => {
             }
         }
     }
-}
+};
 
 
 start();

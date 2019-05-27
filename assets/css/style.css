@@ -12,6 +12,7 @@ body {
     margin: auto;
 }
 
-#word {
-    background-color: rgb(213, 238, 255)
+#b737 {
+    z-index: 0;
+    float: left;
 }
