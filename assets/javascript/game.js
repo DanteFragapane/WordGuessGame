@@ -68,7 +68,7 @@ var pickedLetters = [];
 var wrongLetters = [];
 var word = "";
 var wordArray = [];
-var guessesLeft = 12;
+var guesses = 15;
 var wins = 0;
 var previousWord = "";
 
@@ -85,7 +85,7 @@ const reset = function reset() {
     previousWord = word;
     word = pickNewWord();
 
-    guessesLeft = 12;
+    guessesLeft = guesses;
 
     for (let i = 0; i < word.length; i++) {
         wordArray.push("_");
