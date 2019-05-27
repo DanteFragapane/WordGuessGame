@@ -50,7 +50,17 @@ const words = [
     'gate',
     'terminal',
     'concourse',
-    'stand'
+    'stand',
+    'airspace',
+    'mode',
+    'altimeter',
+    'ndb',
+    'rnav',
+    'lnav',
+    'transponder',
+    'restricted',
+    'friction',
+    'threshold'
 ];
 
 // Set up the variables
