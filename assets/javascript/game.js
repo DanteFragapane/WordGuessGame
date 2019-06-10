@@ -1,5 +1,5 @@
 // Borrowed from random-words' source code, by punkave on GitHub
-const words = [
+var words = [
     'alpha',
     'bravo',
     'charlie',
@@ -73,12 +73,12 @@ var wins = 0;
 var previousWord = "";
 
 // Start the game
-const start = function start() {
+var start = function start() {
     reset();
 };
 
 // Game reset
-const reset = function reset() {
+var reset = function reset() {
     wordArray = [];
     pickedLetters = [];
     wrongLetters = [];
@@ -100,7 +100,7 @@ const reset = function reset() {
 };
 
 // Update the text on the page
-const update = function update() {
+var update = function update() {
     document.getElementById("guessesLeft").textContent = guessesLeft;
     document.getElementById("guesses").textContent = arrayToString(pickedLetters);
     document.getElementById("incorrect").textContent = arrayToString(wrongLetters);
@@ -108,12 +108,12 @@ const update = function update() {
 };
 
 // Pick new word from words list
-const pickNewWord = function pickNewWord() {
+var pickNewWord = function pickNewWord() {
     return words[Math.floor(Math.random() * words.length)];
 };
 
 // Update the uderscores array
-const updateWord = function updateWord(word, underscores, guess) {
+var updateWord = function updateWord(word, underscores, guess) {
     word = word.split("");
 
     for (let i = 0; i < word.length; i++) {
@@ -125,7 +125,7 @@ const updateWord = function updateWord(word, underscores, guess) {
 };
 
 // Argument: array, returns array as string with spaces seperating characters
-const arrayToString = function arrayToString(word) {
+var arrayToString = function arrayToString(word) {
     var spaced = "";
     word.forEach(element => {
         spaced = spaced + " " + element;
@@ -140,7 +140,7 @@ document.onkeyup = () => {
         reset();
     } else {
 
-        const key = event.key;
+        var key = event.key;
         if (key.length == 1 && key.match(/[a-z]/g)) { // Checking if input is an individual character, and is a letter
             if (!pickedLetters.includes(key)) pickedLetters.push(key); // If the pickedLetters array does not include the current key, add it
             if (word.includes(key)) { // Checking if the random word includes the guessed letter
@@ -165,5 +165,5 @@ document.onkeyup = () => {
     }
 };
 
-
+ 
 start();
