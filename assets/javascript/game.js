@@ -69,6 +69,7 @@ var wrongLetters = []
 var word = ''
 var wordArray = []
 var guesses = 15
+var guessesLeft = 10
 var wins = 0
 var previousWord = ''
 
